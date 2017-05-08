@@ -10,7 +10,7 @@ Clone the repository to a suitable location on your local machine.
 
 .. code:: bash
 
-    $git clone https://github.com/loanzen/falcon-auth.git
+    $git clone https://github.com/loanzen/falcon-resource-factory.git
 
 To update the project from within the project's folder you can run the following command:
 
@@ -35,16 +35,16 @@ Feature Requests
 I'm always looking for suggestions to improve this project. If you have a
 suggestion for improving an existing feature, or would like to suggest a
 completely new feature, please file an issue with my
-`Github repository <https://github.com/loanzen/falcon-auth/issues>`__
+`Github repository <https://github.com/loanzen/falcon-resource-factory/issues>`__
 
 Bug Reports
 -----------
 
-You may file bug reports on `Github Issues <https://github.com/loanzen/falcon-auth/issues>`__
+You may file bug reports on `Github Issues <https://github.com/loanzen/falcon-resource-factory/issues>`__
 
 Pull Requests
 -------------
 
 Along with my desire to hear your feedback and suggestions,
 I'm also interested in accepting direct assistance in the form of new code or documentation.
-Please feel free to file pull requests against my `Github repository <https://github.com/loanzen/falcon-auth/issues>`__
+Please feel free to file pull requests against my `Github repository <https://github.com/loanzen/falcon-resource-factory/issues>`__
