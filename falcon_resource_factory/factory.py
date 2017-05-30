@@ -102,9 +102,10 @@ class ResourceFactory(object):
         self._create_custom_views(app, route, resource, params)
 
     def _get_resource_params(self, resource):
-        return {attr: getattr(resource, attr) for attr in dir(resource)
-                if not callable(getattr(resource, attr)) and
-                not attr.startswith("__")}
+        return dict(
+            (attr, getattr(resource, attr)) for attr in dir(resource)
+            if not callable(getattr(resource, attr)) and not attr.startswith("__")
+        )
 
     def _create_route(self, route, part):
         has_trailing_slash = route[-1] == '/'
@@ -115,22 +116,22 @@ class ResourceFactory(object):
 
     def _create_detail_resource(self, app, route, resource, params):
         route = self._create_route(route,
-                                   '{{{}}}'.format(self.detail_identifier))
-        res_cls = '{}Detail'.format(resource.__class__.__name__)
+                                   '{{{0}}}'.format(self.detail_identifier))
+        res_cls = '{0}Detail'.format(resource.__class__.__name__)
         wrapper_cls = type(res_cls, (), params)
         app.add_route(route, self._wrap_resource(wrapper_cls, resource,
                                                  self.detail_method_map))
 
     def _create_list_resource(self, app, route, resource, params):
-        res_cls = '{}List'.format(resource.__class__.__name__)
+        res_cls = '{0}List'.format(resource.__class__.__name__)
         wrapper_cls = type(res_cls, (), params)
         app.add_route(route, self._wrap_resource(wrapper_cls, resource,
                                                  self.list_method_map))
 
     def _create_custom_views(self, app, route, resource, params):
         for view in self.custom_views:
-            res_cls = '{}{}'.format(resource.__class__.__name__,
-                                    utils.underscore_camelcase_converter(
+            res_cls = '{0}{1}'.format(resource.__class__.__name__,
+                                      utils.underscore_camelcase_converter(
                                         view['view']))
 
             if not getattr(resource, view['view']):
@@ -138,14 +139,14 @@ class ResourceFactory(object):
 
             wrapper_cls = type(res_cls, (), params)
 
-            method_map = {method: view['view'] for method in view['methods']}
+            method_map = dict((method, view['view']) for method in view['methods'])
             route = self._create_route(route, view['route'])
             app.add_route(route, self._wrap_resource(wrapper_cls, resource,
                                                      method_map))
 
     def _wrap_resource(self, wrapper_cls, resource, method_map):
         for method, view in method_map.items():
-            func_name = 'on_{}'.format(method.lower())
+            func_name = 'on_{0}'.format(method.lower())
             func = getattr(resource, view, None)
             if func:
                 setattr(wrapper_cls, func_name, func)

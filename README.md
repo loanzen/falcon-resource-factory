@@ -1,8 +1,9 @@
+###Falcon Resource Factory
 
-Falcon Resource Factory
-======================
+[![version](https://img.shields.io/pypi/v/falcon-resource-factory.svg)](https://pypi.python.org/pypi/falcon-resource-factory/)
+[![Build Status](https://travis-ci.org/loanzen/falcon-resource-factory.svg?branch=master)](https://travis-ci.org/loanzen/falcon-resource-factory)
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://pypi.python.org/pypi/falcon-resource-factory/)
 
-|version|
 
 A simple falcon library that allows defining a single resource class to 
 handle requests for a single item as well as multiple items. While though its not 
@@ -11,16 +12,14 @@ The library allows you to define such custom endpoints as well as part of the sa
 single resource class.
 
 
-Installation
-------------
+####Installation
 
 Install the library using pip, or easy_install.
 
     $ pip install -U falcon-resource-factory
     
 
-Usage
------
+####Usage
 
 This library exposes a single class `falcon_resource_factory.ResourceFactory` 
 which is used to add your single resource class to falcon as shown below.
@@ -63,8 +62,8 @@ The `ResourceFactory` instance will create two separate resources internally
                 resource.on_get_list(req, res, **kwargs):
  
  
-Custom Detail Identifier
-------------------------
+#####Custom Detail Identifier
+
 
 `ResourceFactory` creates the route for detail resource by appending
 a resource identifier to the passed route. By default detail identifier is
@@ -73,8 +72,7 @@ a resource identifier to the passed route. By default detail identifier is
     resource_factory = ResourceFactory(detail_identifier='uuid')
 
 
-Custom Method Map
------------------
+#####Custom Method Map
 
 `ResourceFactory` by default maps HTTP methods to handlers in the resource by using 
 `<method> : on_<method>` for detail resources and `<method>: on_<method>_list` 
@@ -108,8 +106,7 @@ resources for both list and detail resources.
             pass
 
 
-CustomViews
------------
+#####CustomViews
 
 Sometimes, you want to support api's that are not CRUD. In such situations, 
 purely RESTful approach suggests that you create more resources instead of defining
@@ -146,12 +143,9 @@ to `ResourceFactory` during initialization and it takes care of rest
             
  
  
- Contributing
- ------------
+ ####Contributing 
  `falcon-resource-factory` is distributed under MIT License. 
  
- Getting Started
- ---------------
  
  Fork the repository to your own account.
  
@@ -164,8 +158,7 @@ to `ResourceFactory` during initialization and it takes care of rest
  
      $git pull --rebase
  
- Building
- --------
+ #####Building 
  
  Install the project's dependencies.
      
@@ -173,30 +166,32 @@ to `ResourceFactory` during initialization and it takes care of rest
      $pip install -r requirements-dev.txt
  
  
- Feature Requests
- ----------------
+ #####Feature Requests
  
  I'm always looking for suggestions to improve this project. If you have a
  suggestion for improving an existing feature, or would like to suggest a
  completely new feature, please file an issue with my [Github repository](https://github.com/loanzen/falcon-resource-factory/issues)
  
- Bug Reports
- -----------
+ #####Bug Reports
  
  You may file bug reports on [Github repository](https://github.com/loanzen/falcon-resource-factory/issues)
  
- Pull Requests
- -------------
+ #####Pull Requests
+
  
  Along with my desire to hear your feedback and suggestions,
  I'm also interested in accepting direct assistance in the form of new code or documentation.
  Please feel free to file pull requests against my [Github repository](https://github.com/loanzen/falcon-resource-factory/issues)
+ 
+ ##### Tests
 
  All pull request should pass the test suite which can launched simply with
  
     python setup.py test
     
   
+  
+  [1]: 
  
 
  

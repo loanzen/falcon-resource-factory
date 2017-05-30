@@ -12,11 +12,11 @@ from falcon_resource_factory import ResourceFactory
 
 
 def detail_view(resource, req, res, **kwargs):
-    res.body = '{} Called'.format(req.method)
+    res.body = '{0} Called'.format(req.method)
 
 
 def list_view(resource, req, res, **kwargs):
-    res.body = '{} list Called'.format(req.method)
+    res.body = '{0} list Called'.format(req.method)
 
 
 def resource_creator(detail_methods, list_methods,
