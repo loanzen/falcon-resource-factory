@@ -31,10 +31,21 @@ if sys.argv[-1] == 'test':
     sys.exit()
 
 
+try:
+   import pypandoc
+   long_description = pypandoc.convert('README.md', 'rst')
+except (IOError, ImportError):
+    import io
+    # pandoc is not installed, fallback to using raw contents
+    with io.open('README.md', encoding="utf-8") as f:
+        long_description = f.read()
+
 setup(
     author='Ritesh Kadmawala',
     author_email='ritesh@loanzen.in',
-    description='falcon-resource-factory',
+    long_description=long_description,
+    description='A simple falcon library that allows defining a single resource class to '
+                'handle requests for a single item as well as multiple items',
     download_url='',
     setup_requires=['pytest-runner'],
     install_requires=[

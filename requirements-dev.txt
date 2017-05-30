@@ -1,5 +1,9 @@
 -r requirements.txt
 
+pypandoc==1.4
+wheel
+
+
 # Testing
 pytest==3.0.7
 tox==2.3.1
