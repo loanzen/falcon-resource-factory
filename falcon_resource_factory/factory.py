@@ -5,6 +5,7 @@ from __future__ import division
 
 from falcon_resource_factory import utils
 
+
 __all__ = ['ResourceFactory']
 
 
